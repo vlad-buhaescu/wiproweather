@@ -14,6 +14,13 @@
 		A1F82EF81F274BB300B7A6E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1F82EF71F274BB300B7A6E7 /* Assets.xcassets */; };
 		A1F82EFB1F274BB300B7A6E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1F82EF91F274BB300B7A6E7 /* LaunchScreen.storyboard */; };
 		A1F82F031F274E4F00B7A6E7 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F82F021F274E4F00B7A6E7 /* ApiManager.swift */; };
+		A1F82F051F2750CF00B7A6E7 /* ApiManager+CityRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F82F041F2750CF00B7A6E7 /* ApiManager+CityRequest.swift */; };
+		A1F82F071F2751A100B7A6E7 /* DayForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F82F061F2751A100B7A6E7 /* DayForecast.swift */; };
+		A1F82F091F27522A00B7A6E7 /* MainInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F82F081F27522A00B7A6E7 /* MainInfo.swift */; };
+		A1F82F0B1F2756D100B7A6E7 /* DayWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F82F0A1F2756D100B7A6E7 /* DayWeather.swift */; };
+		A1F82F0D1F27573100B7A6E7 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F82F0C1F27573100B7A6E7 /* Forecast.swift */; };
+		A1F82F0F1F2757DD00B7A6E7 /* Wind.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F82F0E1F2757DD00B7A6E7 /* Wind.swift */; };
+		A1F82F131F275B0300B7A6E7 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F82F121F275B0300B7A6E7 /* NSObject+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +34,13 @@
 		A1F82EFA1F274BB300B7A6E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A1F82EFC1F274BB300B7A6E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1F82F021F274E4F00B7A6E7 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		A1F82F041F2750CF00B7A6E7 /* ApiManager+CityRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ApiManager+CityRequest.swift"; sourceTree = "<group>"; };
+		A1F82F061F2751A100B7A6E7 /* DayForecast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayForecast.swift; sourceTree = "<group>"; };
+		A1F82F081F27522A00B7A6E7 /* MainInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainInfo.swift; sourceTree = "<group>"; };
+		A1F82F0A1F2756D100B7A6E7 /* DayWeather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayWeather.swift; sourceTree = "<group>"; };
+		A1F82F0C1F27573100B7A6E7 /* Forecast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
+		A1F82F0E1F2757DD00B7A6E7 /* Wind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wind.swift; sourceTree = "<group>"; };
+		A1F82F121F275B0300B7A6E7 /* NSObject+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		AD98B4ABB316035F1C3F7889 /* Pods-WiproWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WiproWeather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WiproWeather/Pods-WiproWeather.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,13 +87,44 @@
 			children = (
 				A1F82EF01F274BB300B7A6E7 /* AppDelegate.swift */,
 				A1F82EF21F274BB300B7A6E7 /* ViewController.swift */,
-				A1F82F021F274E4F00B7A6E7 /* ApiManager.swift */,
+				A1F82F111F2758D600B7A6E7 /* Networking */,
+				A1F82F101F2758CB00B7A6E7 /* Model */,
+				A1F82F141F275B1600B7A6E7 /* Extensions */,
 				A1F82EF41F274BB300B7A6E7 /* Main.storyboard */,
 				A1F82EF71F274BB300B7A6E7 /* Assets.xcassets */,
 				A1F82EF91F274BB300B7A6E7 /* LaunchScreen.storyboard */,
 				A1F82EFC1F274BB300B7A6E7 /* Info.plist */,
 			);
 			path = WiproWeather;
+			sourceTree = "<group>";
+		};
+		A1F82F101F2758CB00B7A6E7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A1F82F0C1F27573100B7A6E7 /* Forecast.swift */,
+				A1F82F061F2751A100B7A6E7 /* DayForecast.swift */,
+				A1F82F081F27522A00B7A6E7 /* MainInfo.swift */,
+				A1F82F0A1F2756D100B7A6E7 /* DayWeather.swift */,
+				A1F82F0E1F2757DD00B7A6E7 /* Wind.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		A1F82F111F2758D600B7A6E7 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A1F82F021F274E4F00B7A6E7 /* ApiManager.swift */,
+				A1F82F041F2750CF00B7A6E7 /* ApiManager+CityRequest.swift */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		A1F82F141F275B1600B7A6E7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A1F82F121F275B0300B7A6E7 /* NSObject+Extension.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		A6EE39DC1773FEFABA27A311 /* Pods */ = {
@@ -214,8 +259,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1F82F0D1F27573100B7A6E7 /* Forecast.swift in Sources */,
 				A1F82EF31F274BB300B7A6E7 /* ViewController.swift in Sources */,
+				A1F82F0F1F2757DD00B7A6E7 /* Wind.swift in Sources */,
+				A1F82F051F2750CF00B7A6E7 /* ApiManager+CityRequest.swift in Sources */,
+				A1F82F091F27522A00B7A6E7 /* MainInfo.swift in Sources */,
+				A1F82F131F275B0300B7A6E7 /* NSObject+Extension.swift in Sources */,
 				A1F82F031F274E4F00B7A6E7 /* ApiManager.swift in Sources */,
+				A1F82F071F2751A100B7A6E7 /* DayForecast.swift in Sources */,
+				A1F82F0B1F2756D100B7A6E7 /* DayWeather.swift in Sources */,
 				A1F82EF11F274BB300B7A6E7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,6 +432,7 @@
 				A1F82F011F274BB300B7A6E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

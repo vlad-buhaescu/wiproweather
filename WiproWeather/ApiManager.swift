@@ -6,10 +6,7 @@
 //  Copyright © 2017 Vlad-Constantin Buhaescu. All rights reserved.
 //
 
-import Foundation
-
 import UIKit
-
 import Alamofire
 import ObjectMapper
 
@@ -23,22 +20,24 @@ class ApiManager: NSObject {
     
     static let sharedInstance = ApiManager()
     
-    fileprivate let baseURL = "http://default-environment-7p45veqn6g.elasticbeanstalk.com/api/"
+    let apiKey = "&appid=a10511bcb44d4c5cbdb8d57b3bca14a5"
+    
+    fileprivate let baseURL = "http://api.openweathermap.org/data/2.5/forecast?q="
+    fileprivate let modeFormat = "&mode=json"
+    //TODO: city from code
     
     typealias SuccesBlock = (DataResponse<Any>, String?) -> Void
     typealias SuccesBlockAny = (AnyObject) -> Void
     typealias FailureBlock = (Error!) -> Void
     
-    func basicAPICall(_ type: Alamofire.HTTPMethod, complementaryURL: String, parameters: Dictionary<String,String>, succesBlock: @escaping SuccesBlock, failureBlock: @escaping FailureBlock)    {
+    func basicAPICall(_ type: Alamofire.HTTPMethod, complementaryParams: String, parameters: Dictionary<String,String>, succesBlock: @escaping SuccesBlock, failureBlock: @escaping FailureBlock)    {
         
-        let urlString: String = baseURL + complementaryURL as String
-        
-        let header = ["application":"x-www-form-urlencoded"]
+        let urlString: String = baseURL + complementaryParams + modeFormat + apiKey as String
         
         switch type {
         case .get:
             
-            let dataRequest = Alamofire.request(urlString, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: header ).responseJSON { response in
+            let dataRequest = Alamofire.request(urlString, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: [:] ).responseJSON { response in
                 succesBlock(response, "succesful")
             }
             
