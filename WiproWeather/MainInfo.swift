@@ -11,15 +11,19 @@ import ObjectMapper
 
 class MainInfo: NSObject,Mappable {
     
-    var temp:String?
-    var humidity:String?
+    var temp:Float?
+    var humidity:Float?
+    var tempMin:Float?
+    var tempMax:Float?
     
     public required init?(map: Map) {
     }
     // Mappable
     public func mapping(map: Map) {
-        
-        
+        temp <- map["temp"]
+        humidity <- map["humidity"]
+        tempMin <- map["temp_min"]
+        tempMax <- map["temp_max"]
     }
     
 }

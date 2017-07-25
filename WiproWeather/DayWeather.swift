@@ -13,13 +13,16 @@ class DayWeather: NSObject,Mappable {
     
     var main:String?
     var icon:String?
+    var desc:String?
     
     public required init?(map: Map) {
     }
     // Mappable
     public func mapping(map: Map) {
         
-        
+        main <- map["main"]
+        desc <- map["description"]
+        icon <- map["icon"]
     }
     
 }

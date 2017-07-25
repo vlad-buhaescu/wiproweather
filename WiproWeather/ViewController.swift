@@ -22,10 +22,16 @@ class ViewController: UIViewController {
         self.collectionView.dataSource = wheatherDataService
         
         ApiManager.sharedInstance.getForecastFor(city: "London", country: "uk", succesBlock: { (response) in
-            if let forecast = response as? Forecast {
-                print("wheater resp  \(forecast.descriptionOfObject())")
-                ApiManager.sharedInstance.cancelRequests()
+            DispatchQueue.main.async {
+                if let forecast = response as? Forecast {
+                    self.wheatherDataService.dataSource = forecast
+                    self.collectionView.reloadData()
+                    print("wheater resp  \(forecast.descriptionOfObject())")
+                    
+                }
             }
+            
+            ApiManager.sharedInstance.cancelRequests()
             
             
         }) { (error) in

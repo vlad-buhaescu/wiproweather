@@ -25,7 +25,7 @@ class DayForecast: NSObject,Mappable {
         main <- map["main"]
         weather <- map["weather"]
         wind <- map["wind"]
-//        rain <- map["<#KeyName#>"]
+//        rain <- map["KeyName"]
         time <- map["dt_txt"]
     }
     

@@ -11,17 +11,24 @@ import UIKit
 
 class WheatherDataService: NSObject,UICollectionViewDelegate,UICollectionViewDataSource {
     
+    var dataSource:Forecast?
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 10
+        if let dataElements = dataSource?.list {
+            return dataElements.count
+        } else {
+            return 0
+        }
+        
         
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-//        cell.backgroundColor = UIColor.lightGray
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ForecastCollectionViewCell
+        cell.setupCell(dayForecast: (self.dataSource?.list?[indexPath.row])!)
+
         return cell
     }
     
