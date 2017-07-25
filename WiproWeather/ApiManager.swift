@@ -26,6 +26,8 @@ class ApiManager: NSObject {
     fileprivate let modeFormat = "&mode=json"
     //TODO: city from code
     
+    fileprivate var requests = [Request]()
+    
     typealias SuccesBlock = (DataResponse<Any>, String?) -> Void
     typealias SuccesBlockAny = (AnyObject) -> Void
     typealias FailureBlock = (Error!) -> Void
@@ -43,10 +45,21 @@ class ApiManager: NSObject {
             
             dataRequest.resume()
             
+            requests.append(dataRequest)
+            
             break
         default:
             break
         }
+    }
+    
+    func cancelRequests() {
+        if requests.count > 0 {
+            for request in requests {
+                request.cancel()
+            }
+        }
+        requests.removeAll() //Delete all canceled requests
     }
 }
 

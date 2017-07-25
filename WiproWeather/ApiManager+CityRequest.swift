@@ -20,9 +20,9 @@ extension ApiManager {
                     succesBlock(feed)
                 }
             }
-            
-            failureBlock(ErrorReason.failedParsingJSON)
-            
+            else {
+                failureBlock(ErrorReason.failedParsingJSON)
+            }
         }) { (error) in
             #if DEBUG
                 print("error in \(#file) \(#function) \n \(error)")
