@@ -22,7 +22,7 @@ class ApiManager: NSObject {
     
     let apiKey = "&appid=a10511bcb44d4c5cbdb8d57b3bca14a5"
     
-    fileprivate let baseURL = "http://api.openweathermap.org/data/2.5/forecast?q="
+    fileprivate let baseURL = "http://api.openweathermap.org/data/2.5/forecast?"
     fileprivate let modeFormat = "&mode=json&units=metric"
     //TODO: city from code
     

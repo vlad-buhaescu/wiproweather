@@ -132,14 +132,29 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="veC-9c-BuN">
+                                <rect key="frame" x="119.5" y="72" width="135" height="30"/>
+                                <color key="backgroundColor" red="0.2470588235" green="0.53333333329999999" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="135" id="ZHL-HT-1cE"/>
+                                </constraints>
+                                <state key="normal" title="Get wheather here">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="getWheatherHereAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="isz-af-2ht"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="mSY-bX-han" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9l5-aJ-CNr"/>
                             <constraint firstAttribute="trailing" secondItem="mSY-bX-han" secondAttribute="trailing" id="A6y-dG-Ny4"/>
+                            <constraint firstItem="veC-9c-BuN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="T8O-cg-uCg"/>
                             <constraint firstItem="rfI-p3-AVV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cS2-Qj-FwB"/>
                             <constraint firstAttribute="trailing" secondItem="rfI-p3-AVV" secondAttribute="trailing" id="esk-sl-cXM"/>
                             <constraint firstItem="rfI-p3-AVV" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="hry-Ja-8Sh"/>
+                            <constraint firstItem="veC-9c-BuN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oxm-mb-lRk"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mSY-bX-han" secondAttribute="bottom" id="xaH-Zh-f5a"/>
                             <constraint firstItem="rfI-p3-AVV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="yAK-Uj-ZET"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rfI-p3-AVV" secondAttribute="bottom" id="zRQ-sY-okQ"/>
@@ -155,6 +170,7 @@
                     <connections>
                         <outlet property="collectionView" destination="mSY-bX-han" id="8u3-OD-IvC"/>
                         <outlet property="mapView" destination="rfI-p3-AVV" id="6un-nN-tBQ"/>
+                        <outlet property="newSearchButtonOutlet" destination="veC-9c-BuN" id="Jfx-Y0-AbW"/>
                         <outlet property="wheatherDataService" destination="S4q-T4-4JP" id="4vT-ld-0y2"/>
                     </connections>
                 </viewController>
