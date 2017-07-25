@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         self.mapView.delegate = self
         
         let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 51.4967, longitude: -0.094)
@@ -40,12 +40,10 @@ class ViewController: UIViewController {
         self.collectionView.dataSource = wheatherDataService
         self.getForecast(city: "London", isoCode: "uk")
         
-        
         newSearchButtonOutlet.layer.cornerRadius = 15.0
         newSearchButtonOutlet.layer.masksToBounds = true
         newSearchButtonOutlet.isHidden = true
-        
-        
+    
     }
     
     func getForecast(city:String,isoCode:String)  {
@@ -65,11 +63,10 @@ class ViewController: UIViewController {
             
             ApiManager.sharedInstance.cancelRequests()
             
-            
         }) { (error) in
             print("error in \(#file) \(type(of: self)) \n \(error)")
         }
-
+        
     }
     
     func getISOCountryCode(locationParam:CLLocation,makeRequest:Bool)  {
@@ -77,10 +74,8 @@ class ViewController: UIViewController {
         let geocoder = CLGeocoder.init()
         
         geocoder.reverseGeocodeLocation(locationParam) { (placemarks, error) in
-            // Process Response
             self.processResponse(withPlacemarks: placemarks, error: error,makeRequest: makeRequest)
         }
-        
     }
     
     func processResponse(withPlacemarks placemarks: [CLPlacemark]?, error: Error?, makeRequest:Bool) {
@@ -106,11 +101,12 @@ class ViewController: UIViewController {
     
     @IBAction func showSearchBar(_ sender: AnyObject) {
         searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.placeholder = "type city name"
         searchController.hidesNavigationBarDuringPresentation = false
         self.searchController.searchBar.delegate = self
         present(searchController, animated: true, completion: nil)
     }
-
+    
     @IBAction func getWheatherHereAction(_ sender: UIButton) {
         
         self.getISOCountryCode(locationParam: CLLocation.init(latitude: self.mapView.centerCoordinate.latitude, longitude: self.mapView.centerCoordinate.longitude),makeRequest: false)
@@ -122,6 +118,10 @@ class ViewController: UIViewController {
                     self.newSearchButtonOutlet.isHidden = true
                     self.wheatherDataService.dataSource = forecast
                     self.collectionView.reloadData()
+                    
+                    let annotationLocation = MKPointAnnotation.init()
+                    annotationLocation.coordinate = CLLocationCoordinate2DMake(self.mapView.centerCoordinate.latitude, self.mapView.centerCoordinate.longitude)
+                    self.dropPin(pinCoords: annotationLocation)
                     
                     if forecast.list?.count != 0 {
                         self.collectionView?.scrollToItem(at: IndexPath(row: 0, section: 0),
@@ -137,6 +137,13 @@ class ViewController: UIViewController {
         }) { (error) in
             print("error in \(#file) \(type(of: self)) \n \(error)")
         }
+    }
+    
+    func dropPin(pinCoords:MKPointAnnotation)  {
+        
+        let pinAnnotationView = MKPinAnnotationView(annotation: pinCoords, reuseIdentifier: nil)
+        self.mapView.centerCoordinate = pinCoords.coordinate
+        self.mapView.addAnnotation(pinAnnotationView.annotation!)
     }
 }
 
@@ -174,17 +181,13 @@ extension ViewController: UISearchBarDelegate {
             
             self.pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: localSearchResponse!.boundingRegion.center.latitude, longitude: localSearchResponse!.boundingRegion.center.longitude)
             
-            self.pinAnnotationView = MKPinAnnotationView(annotation: self.pointAnnotation, reuseIdentifier: nil)
-            self.mapView.centerCoordinate = self.pointAnnotation.coordinate
-            self.mapView.addAnnotation(self.pinAnnotationView.annotation!)
+            self.dropPin(pinCoords: self.pointAnnotation)
             
             let location = CLLocation.init(latitude: (localSearchResponse?.boundingRegion.center.latitude)!, longitude: (localSearchResponse?.boundingRegion.center.longitude)!)
             self.getISOCountryCode(locationParam: location,makeRequest: true)
         }
     }
-
 }
-
 
 extension ViewController:MKMapViewDelegate {
     

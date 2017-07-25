@@ -79,6 +79,7 @@
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f2J-A9-gbo">
                                                     <rect key="frame" x="279" y="27" width="71" height="71"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="71" id="5Ba-q3-2C0"/>
                                                         <constraint firstAttribute="height" constant="71" id="pI6-nZ-9nU"/>
