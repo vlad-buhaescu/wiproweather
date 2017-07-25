@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ForecastCollectionViewCell: UICollectionViewCell {
     
@@ -17,7 +18,14 @@ class ForecastCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var humidityLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
     
+    var contentImageRequest: ImageRequest?
+    var photosManager: PhotosManager { return .shared }
+    var dayForecast:DayForecast?
+    
     func setupCell(dayForecast:DayForecast)  {
+        
+        reset()
+        loadImage()
         
         if let temp = dayForecast.main?.temp {
             tempLabel.text = "\(temp) ℃"
@@ -35,5 +43,43 @@ class ForecastCollectionViewCell: UICollectionViewCell {
             humidityLabel.text = "\(humidityS)%"
         }
         
+    }
+    
+    func reset() {
+        iconImageView.image = nil
+        contentImageRequest?.cancel()
+    }
+    
+    func loadImage() {
+        
+        guard let iconName = dayForecast?.weather?.first?.icon else {
+            return
+        }
+        
+        if let image = photosManager.cachedImage(for: iconName) {
+            populate(with: image)
+            return
+        }
+        downloadImage()
+    }
+    
+    func downloadImage() {
+        contentImageRequest = photosManager.retrieveImage(for: (picture?.url)!) { image in
+            self.populate(with: image)
+        }
+    }
+    
+    func populate(with image: UIImage) {
+        
+        DispatchQueue.main.async {
+            self.imageViewCell.image = image
+            
+            self.imageViewCell.roundCorners()
+        }
+    }
+    
+    override func prepareForReuse() {
+        self.imageViewCell.image = nil
+        self.contentImageRequest.cancel()
     }
 }

@@ -7,5 +7,6 @@ target 'WiproWeather' do
 
   # Pods for Appli
   pod 'AlamofireObjectMapper', '~> 4.0'
+  pod 'AlamofireImage'
  
 end

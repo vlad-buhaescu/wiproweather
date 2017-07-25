@@ -25,6 +25,8 @@
 		A1F82F181F276A6C00B7A6E7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1F82F171F276A6C00B7A6E7 /* MapKit.framework */; };
 		A1F82F1A1F276B4900B7A6E7 /* WheatherDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F82F191F276B4900B7A6E7 /* WheatherDataService.swift */; };
 		A1F82F1C1F276EEB00B7A6E7 /* ForecastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F82F1B1F276EEB00B7A6E7 /* ForecastCollectionViewCell.swift */; };
+		A1F82F1E1F277FA200B7A6E7 /* ImageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F82F1D1F277FA200B7A6E7 /* ImageRequest.swift */; };
+		A1F82F201F277FD400B7A6E7 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F82F1F1F277FD400B7A6E7 /* PhotoManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,8 @@
 		A1F82F171F276A6C00B7A6E7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A1F82F191F276B4900B7A6E7 /* WheatherDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WheatherDataService.swift; sourceTree = "<group>"; };
 		A1F82F1B1F276EEB00B7A6E7 /* ForecastCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastCollectionViewCell.swift; sourceTree = "<group>"; };
+		A1F82F1D1F277FA200B7A6E7 /* ImageRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRequest.swift; sourceTree = "<group>"; };
+		A1F82F1F1F277FD400B7A6E7 /* PhotoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 		AD98B4ABB316035F1C3F7889 /* Pods-WiproWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WiproWeather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WiproWeather/Pods-WiproWeather.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,6 +104,8 @@
 				A1F82EF21F274BB300B7A6E7 /* ViewController.swift */,
 				A1F82F191F276B4900B7A6E7 /* WheatherDataService.swift */,
 				A1F82F1B1F276EEB00B7A6E7 /* ForecastCollectionViewCell.swift */,
+				A1F82F1F1F277FD400B7A6E7 /* PhotoManager.swift */,
+				A1F82F1D1F277FA200B7A6E7 /* ImageRequest.swift */,
 				A1F82F111F2758D600B7A6E7 /* Networking */,
 				A1F82F101F2758CB00B7A6E7 /* Model */,
 				A1F82F141F275B1600B7A6E7 /* Extensions */,
@@ -275,8 +281,10 @@
 				A1F82F0D1F27573100B7A6E7 /* Forecast.swift in Sources */,
 				A1F82EF31F274BB300B7A6E7 /* ViewController.swift in Sources */,
 				A1F82F0F1F2757DD00B7A6E7 /* Wind.swift in Sources */,
+				A1F82F201F277FD400B7A6E7 /* PhotoManager.swift in Sources */,
 				A1F82F1A1F276B4900B7A6E7 /* WheatherDataService.swift in Sources */,
 				A1F82F161F275FBE00B7A6E7 /* Array+Extensions.swift in Sources */,
+				A1F82F1E1F277FA200B7A6E7 /* ImageRequest.swift in Sources */,
 				A1F82F051F2750CF00B7A6E7 /* ApiManager+CityRequest.swift in Sources */,
 				A1F82F091F27522A00B7A6E7 /* MainInfo.swift in Sources */,
 				A1F82F131F275B0300B7A6E7 /* NSObject+Extension.swift in Sources */,
