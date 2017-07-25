@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class WheatherDataService: NSObject,UICollectionViewDelegate,UICollectionViewDataSource {
+class WheatherDataService: NSObject,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
     var dataSource:Forecast?
     
@@ -20,31 +20,22 @@ class WheatherDataService: NSObject,UICollectionViewDelegate,UICollectionViewDat
         } else {
             return 0
         }
-        
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ForecastCollectionViewCell
         cell.setupCell(dayForecast: (self.dataSource?.list?[indexPath.row])!)
-
+        cell.backgroundColor = UIColor.blue
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        
-        let width = collectionView.bounds.width
+        let width = UIScreen.main.bounds.width 
         let height:CGFloat = 120
         
         return CGSize.init(width: width, height: height)
         
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        
-        return 50
-    }
-    
 }

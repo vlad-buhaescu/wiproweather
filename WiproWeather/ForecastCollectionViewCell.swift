@@ -17,6 +17,7 @@ class ForecastCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var rainDesc: UILabel!
     @IBOutlet weak var humidityLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var timeLabel: UILabel!
     
     var contentImageRequest: ImageRequest?
     var photosManager: PhotosManager { return .shared }
@@ -27,6 +28,20 @@ class ForecastCollectionViewCell: UICollectionViewCell {
         self.dayForecast = dayForecast
         reset()
         loadImage()
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
+        dateFormatter.locale = Locale.current
+        dateFormatter.timeZone = TimeZone(abbreviation: "en_GB")
+        
+        let dateObj = dateFormatter.date(from: dayForecast.time!)
+        
+        dateFormatter.dateFormat = "EEEE dd MMMM HH:mm"
+            
+        if let date = dateObj {
+            self.timeLabel.text = dateFormatter.string(from: date)
+            
+        }
         
         if let temp = dayForecast.main?.temp {
             tempLabel.text = "\(temp) ℃"

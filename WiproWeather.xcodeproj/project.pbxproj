@@ -193,6 +193,7 @@
 				TargetAttributes = {
 					A1F82EEC1F274BB300B7A6E7 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = NKABUV39MY;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -420,6 +421,7 @@
 			baseConfigurationReference = AD98B4ABB316035F1C3F7889 /* Pods-WiproWeather.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = NKABUV39MY;
 				INFOPLIST_FILE = WiproWeather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = home.WiproWeather;
@@ -433,6 +435,7 @@
 			baseConfigurationReference = 853A7CE54FC10BCEE69F5BE2 /* Pods-WiproWeather.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = NKABUV39MY;
 				INFOPLIST_FILE = WiproWeather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = home.WiproWeather;
