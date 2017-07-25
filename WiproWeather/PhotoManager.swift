@@ -21,7 +21,6 @@ class PhotosManager {
     
     static let shared = PhotosManager()
     
-    var imagesStack:[ImagePersistence] = []
     
     let imageCache = AutoPurgingImageCache(
         memoryCapacity: UInt64(200).megabytes(),
@@ -30,7 +29,7 @@ class PhotosManager {
     
     let decodeQueue: OperationQueue = {
         let queue = OperationQueue()
-        queue.underlyingQueue = DispatchQueue(label: "home.PocketVU1", attributes: .concurrent)
+        queue.underlyingQueue = DispatchQueue(label: "home.wiproWheather", attributes: .concurrent)
         queue.maxConcurrentOperationCount = 4
         return queue
     }()
@@ -39,21 +38,16 @@ class PhotosManager {
     
     func retrieveImage(for url: String, completion: @escaping (UIImage) -> Void) -> ImageRequest {
         
+        let finalUrl = "http://openweathermap.org/img/w/\(url).png"
+        
         let queue = decodeQueue.underlyingQueue
-        let request = Alamofire.request(url, method: .get)
+        let request = Alamofire.request(finalUrl, method: .get)
         let imageRequest = ImageRequest(request: request)
         let serializer = DataRequest.imageResponseSerializer()
         imageRequest.request.response(queue: queue, responseSerializer: serializer) { response in
             guard let image = response.result.value else { return }
             imageRequest.decodeOperation = self.decode(image) { image in
                 completion(image)
-                
-                if self.imagesStack.getImagePersistanceForUrl(url: url) == nil {
-                    let imagePersistance = ImagePersistence()
-                    imagePersistance.image = image
-                    imagePersistance.url = url
-                    self.imagesStack.append(imagePersistance)
-                }
                 
                 self.cache(image, for: url)
             }
@@ -81,11 +75,7 @@ class PhotosManager {
     }
     
     func cachedImage(for url: String) -> Image? {
-        
-        if let image = self.imagesStack.getImagePersistanceForUrl(url: url) {
-            return image
-        }
-        
+       
         return imageCache.image(withIdentifier: url)
     }
     

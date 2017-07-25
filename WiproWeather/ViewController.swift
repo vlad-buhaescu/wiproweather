@@ -26,7 +26,7 @@ class ViewController: UIViewController {
                 if let forecast = response as? Forecast {
                     self.wheatherDataService.dataSource = forecast
                     self.collectionView.reloadData()
-                    print("wheater resp  \(forecast.descriptionOfObject())")
+//                    print("wheater resp  \(forecast.descriptionOfObject())")
                     
                 }
             }

@@ -21,9 +21,10 @@ class ForecastCollectionViewCell: UICollectionViewCell {
     var contentImageRequest: ImageRequest?
     var photosManager: PhotosManager { return .shared }
     var dayForecast:DayForecast?
+    var iconName:String?
     
     func setupCell(dayForecast:DayForecast)  {
-        
+        self.dayForecast = dayForecast
         reset()
         loadImage()
         
@@ -55,7 +56,7 @@ class ForecastCollectionViewCell: UICollectionViewCell {
         guard let iconName = dayForecast?.weather?.first?.icon else {
             return
         }
-        
+        self.iconName = iconName
         if let image = photosManager.cachedImage(for: iconName) {
             populate(with: image)
             return
@@ -64,22 +65,24 @@ class ForecastCollectionViewCell: UICollectionViewCell {
     }
     
     func downloadImage() {
-        contentImageRequest = photosManager.retrieveImage(for: (picture?.url)!) { image in
-            self.populate(with: image)
+        
+        if let iconNameL = self.iconName {
+            contentImageRequest = photosManager.retrieveImage(for: iconNameL) { image in
+                self.populate(with: image)
+            }
         }
     }
     
     func populate(with image: UIImage) {
         
         DispatchQueue.main.async {
-            self.imageViewCell.image = image
-            
-            self.imageViewCell.roundCorners()
+            self.iconImageView.image = image
+          
         }
     }
     
     override func prepareForReuse() {
-        self.imageViewCell.image = nil
-        self.contentImageRequest.cancel()
+        self.iconImageView.image = nil
+        self.contentImageRequest?.cancel()
     }
 }
