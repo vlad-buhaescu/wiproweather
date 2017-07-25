@@ -26,7 +26,6 @@ class WheatherDataService: NSObject,UICollectionViewDelegate,UICollectionViewDat
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ForecastCollectionViewCell
         cell.setupCell(dayForecast: (self.dataSource?.list?[indexPath.row])!)
-        cell.backgroundColor = UIColor.blue
         return cell
     }
     
